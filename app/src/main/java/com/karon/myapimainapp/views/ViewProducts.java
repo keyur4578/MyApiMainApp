@@ -1,5 +1,6 @@
 package com.karon.myapimainapp.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -76,6 +77,8 @@ public class ViewProducts extends AppCompatActivity implements ProductAdapter.On
 
     @Override
     public void onMainItemClick(Product obj) {
-
+        Intent intent = new Intent(ViewProducts.this, ViewProductDetailsActivity.class);
+        intent.putExtra("id",String.valueOf(obj.id));
+        startActivity(intent);
     }
 }
