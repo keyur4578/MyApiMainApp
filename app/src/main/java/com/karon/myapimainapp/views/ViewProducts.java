@@ -21,10 +21,13 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.karon.myapimainapp.R;
 import com.karon.myapimainapp.adapters.ProductAdapter;
+import com.karon.myapimainapp.adapters.QuoteAdapter;
 import com.karon.myapimainapp.constants.ApiConstant;
+import com.karon.myapimainapp.helper.ApiHelper;
 import com.karon.myapimainapp.models.Product;
 import com.karon.myapimainapp.models.ProductResponse;
 import com.karon.myapimainapp.models.Quote;
+import com.karon.myapimainapp.models.QuoteResponse;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -61,18 +64,31 @@ public class ViewProducts extends AppCompatActivity implements ProductAdapter.On
     }
     void load_data()
     {
-        StringRequest request = new StringRequest(Request.Method.GET, ApiConstant.PRODUCT_API,
-                response -> {
 
-                    ProductResponse productResponse = new Gson().fromJson(response,ProductResponse.class);
-                    data.addAll(productResponse.products);
-                    ProductAdapter adapter = new ProductAdapter(ViewProducts.this,data,this);
-                    mylistview.setAdapter(adapter);
+        ApiHelper.getRequest(ViewProducts.this,ApiConstant.QUOTE_API,null, response->{
+            ProductResponse productResponse = new Gson().fromJson(response,ProductResponse.class);
+            data.addAll(productResponse.products);
+            ProductAdapter adapter = new ProductAdapter(ViewProducts.this,data,this);
+            mylistview.setAdapter(adapter);
 
-                },
-                error -> Toast.makeText(this, "Volley Error: " + error.getMessage(), Toast.LENGTH_LONG).show()
-        );
-        Volley.newRequestQueue(this).add(request);
+        },error->{
+            Toast.makeText(this, ""+error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+        });
+
+
+
+//        StringRequest request = new StringRequest(Request.Method.GET, ApiConstant.PRODUCT_API,
+//                response -> {
+//
+//                    ProductResponse productResponse = new Gson().fromJson(response,ProductResponse.class);
+//                    data.addAll(productResponse.products);
+//                    ProductAdapter adapter = new ProductAdapter(ViewProducts.this,data,this);
+//                    mylistview.setAdapter(adapter);
+//
+//                },
+//                error -> Toast.makeText(this, "Volley Error: " + error.getMessage(), Toast.LENGTH_LONG).show()
+//        );
+//        Volley.newRequestQueue(this).add(request);
     }
 
     @Override

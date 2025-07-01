@@ -21,6 +21,8 @@ import com.google.gson.Gson;
 import com.karon.myapimainapp.R;
 import com.karon.myapimainapp.adapters.QuoteAdapter;
 import com.karon.myapimainapp.constants.ApiConstant;
+import com.karon.myapimainapp.controllers.QuoteManager;
+import com.karon.myapimainapp.helper.ApiHelper;
 import com.karon.myapimainapp.models.Quote;
 import com.karon.myapimainapp.models.QuoteResponse;
 
@@ -29,6 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class QuoteActivity extends AppCompatActivity {
 
@@ -59,43 +62,69 @@ public class QuoteActivity extends AppCompatActivity {
         data = new ArrayList<>();
         loadData();
     }
+
     void loadData()
     {
-        StringRequest request = new StringRequest(Request.Method.GET, ApiConstant.QUOTE_API,
-                response -> {
+        QuoteManager.fetchAllQuotes(QuoteActivity.this, new QuoteManager.QuoteCallback() {
+            @Override
+            public void onSuccess(List<Quote> quotes) {
+                data.addAll(quotes);
+                QuoteAdapter adapter = new QuoteAdapter(QuoteActivity.this,data);
+                mylistview.setAdapter(adapter);
+            }
 
-                        QuoteResponse quoteResponse = new Gson().fromJson(response,QuoteResponse.class);
-                        data.addAll(quoteResponse.quotes);
+            @Override
+            public void onError(String error) {
+                Toast.makeText(QuoteActivity.this, ""+error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
-//                        JSONArray quotes = response.getJSONArray("quotes");
-//                        for(int i=0;i<quotes.length();i++)
-//                        {
-//                            JSONObject obj = quotes.getJSONObject(i);
-//                            String quote = obj.getString("quote");
-//                            String auJSONObject obj = quotes.getJSONObject(i);
+
+//        ApiHelper.getRequest(QuoteActivity.this,ApiConstant.QUOTE_API,null,response->{
+//            QuoteResponse quoteResponse = new Gson().fromJson(response,QuoteResponse.class);
+//            data.addAll(quoteResponse.quotes);
+//            QuoteAdapter adapter = new QuoteAdapter(QuoteActivity.this,data);
+//            mylistview.setAdapter(adapter);
+//
+//        },error->{
+//            Toast.makeText(this, ""+error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+//        });
+
+
+//        StringRequest request = new StringRequest(Request.Method.GET, ApiConstant.QUOTE_API,
+//                response -> {
+//
+//                        QuoteResponse quoteResponse = new Gson().fromJson(response,QuoteResponse.class);
+//                        data.addAll(quoteResponse.quotes);
+//
+////                        JSONArray quotes = response.getJSONArray("quotes");
+////                        for(int i=0;i<quotes.length();i++)
+////                        {
+////                            JSONObject obj = quotes.getJSONObject(i);
 ////                            String quote = obj.getString("quote");
-////                            String author = obj.getString("author");
-////thor = obj.getString("author");
+////                            String auJSONObject obj = quotes.getJSONObject(i);
+//////                            String quote = obj.getString("quote");
+//////                            String author = obj.getString("author");
+//////thor = obj.getString("author");
+////
+////                            Quote q = new Quote();
+////                            q.setQuote(quote);
+////                            q.setAuthor(author);
+////
+////                            data.add(q);
+////
+////                        }
+//                        QuoteAdapter adapter = new QuoteAdapter(QuoteActivity.this,data);
+//                        mylistview.setAdapter(adapter);
 //
-//                            Quote q = new Quote();
-//                            q.setQuote(quote);
-//                            q.setAuthor(author);
 //
-//                            data.add(q);
 //
-//                        }
-                        QuoteAdapter adapter = new QuoteAdapter(QuoteActivity.this,data);
-                        mylistview.setAdapter(adapter);
-
-
-
-
-                },
-                error->{
-                    Toast.makeText(this, ""+error.getMessage().toString(), Toast.LENGTH_SHORT).show();
-                }
-                );
-        RequestQueue queue = Volley.newRequestQueue(QuoteActivity.this);
-        queue.add(request);
+//
+//                },
+//                error->{
+//                    Toast.makeText(this, ""+error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+//                }
+//                );
+//        Volley.newRequestQueue(this).add(request);
     }
 }
