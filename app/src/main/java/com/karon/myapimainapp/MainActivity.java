@@ -19,6 +19,8 @@ import com.karon.myapimainapp.views.QuoteActivity;
 import com.karon.myapimainapp.views.RegisterActivity;
 import com.karon.myapimainapp.views.SettingsActivity;
 import com.karon.myapimainapp.views.ViewProducts;
+import com.karon.myapimainapp.views.category.AddCategory;
+import com.karon.myapimainapp.views.category.ViewCategory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
             }
             if (item.getItemId() == R.id.nav_product) {
                 Intent intent = new Intent(MainActivity.this, ViewProducts.class);
+                startActivity(intent);
+            }
+            if (item.getItemId() == R.id.nav_add_category) {
+                Intent intent = new Intent(MainActivity.this, AddCategory.class);
+                startActivity(intent);
+            }
+            if (item.getItemId() == R.id.nav_view_category) {
+                Intent intent = new Intent(MainActivity.this, ViewCategory.class);
                 startActivity(intent);
             }
             drawerLayout.closeDrawer(GravityCompat.START);
