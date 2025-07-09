@@ -28,6 +28,17 @@
                 android:textColor="#000000"
                 android:layout_height="wrap_content"/>
 
+            <Button
+                android:layout_width="wrap_content"
+                android:id="@+id/btndelete"
+                android:text="Delete"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:id="@+id/btnedit"
+                android:text="Edit"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
