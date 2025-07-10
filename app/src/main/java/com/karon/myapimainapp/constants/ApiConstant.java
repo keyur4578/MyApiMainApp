@@ -14,4 +14,5 @@ public class ApiConstant {
     public static String SINGLE_CATEGORY = BASE_URL2 + "single_category.php";
     public static String UPDATE_CATEGORY = BASE_URL2 + "update_category.php";
     public static String ADD_CATEGORY = BASE_URL2 + "add_category.php";
+    public static String ADD_SUB_CATEGORY = BASE_URL2 + "add_subcategory.php";
 }

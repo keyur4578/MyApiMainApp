@@ -21,6 +21,9 @@
         android:theme="@style/Theme.MyApiMainApp"
         tools:targetApi="31">
         <activity
+            android:name=".views.subcategory.AddSubCategory"
+            android:exported="false" />
+        <activity
             android:name=".views.category.EditCategory"
             android:exported="false" />
         <activity
