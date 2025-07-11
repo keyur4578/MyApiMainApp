@@ -21,6 +21,7 @@ import com.karon.myapimainapp.views.SettingsActivity;
 import com.karon.myapimainapp.views.ViewProducts;
 import com.karon.myapimainapp.views.category.AddCategory;
 import com.karon.myapimainapp.views.category.ViewCategory;
+import com.karon.myapimainapp.views.category.ViewCategoryRec;
 import com.karon.myapimainapp.views.subcategory.AddSubCategory;
 
 public class MainActivity extends AppCompatActivity {
@@ -78,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
             }
             if (item.getItemId() == R.id.nav_add_subcategory) {
                 Intent intent = new Intent(MainActivity.this, AddSubCategory.class);
+                startActivity(intent);
+            }
+            if (item.getItemId() == R.id.nav_view_sub_cat_rec) {
+                Intent intent = new Intent(MainActivity.this, ViewCategoryRec.class);
                 startActivity(intent);
             }
 
