@@ -46,7 +46,9 @@ public class ViewCategoryRec extends AppCompatActivity {
             return insets;
         });
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+      //  recyclerView.setLayoutManager(new LinearLayoutManager(this));
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -66,17 +68,11 @@ public class ViewCategoryRec extends AppCompatActivity {
         ApiHelper.getRequest(ViewCategoryRec.this, ApiConstant.ALL_CATEGORY,null, response->{
             Type listType = new TypeToken<List<Category>>(){}.getType();
             data = new Gson().fromJson(response, listType);
-            // data.addAll(categories);
             CategoryAdvanceAdapter adapter = new CategoryAdvanceAdapter(ViewCategoryRec.this,data);
             recyclerView.setAdapter(adapter);
 
         },error->{
             Toast.makeText(this, ""+error.getMessage().toString(), Toast.LENGTH_SHORT).show();
         });
-
-
-
-
-
     }
 }

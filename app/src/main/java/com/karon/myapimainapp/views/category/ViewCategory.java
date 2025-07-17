@@ -66,6 +66,14 @@ public class ViewCategory extends AppCompatActivity implements CategoryAdapter.O
     void loadData()
     {
 
+
+//        Type listType = new TypeToken<List<Category>>(){}.getType();
+//        data = new Gson().fromJson(response, listType);
+//        // data.addAll(categories);
+//        CategoryAdapter adapter = new CategoryAdapter(ViewCategory.this,data,this);
+//        mylistview.setAdapter(adapter);
+
+
         ApiHelper.getRequest(ViewCategory.this, ApiConstant.ALL_CATEGORY,null, response->{
             Type listType = new TypeToken<List<Category>>(){}.getType();
             data = new Gson().fromJson(response, listType);

@@ -22,11 +22,19 @@ public class CategoryAdvanceAdapter extends  RecyclerView.Adapter<CategoryAdvanc
 
     Context context;
     ArrayList<Category> categories;
+    CategoryAdapter.OnClickListner listner;
 
-    public CategoryAdvanceAdapter(Context context, ArrayList<Category> quotes)
+    public interface OnClickListner
+    {
+        void onDeleteClick(Category obj);
+        void onEditClick(Category obj);
+    }
+
+    public CategoryAdvanceAdapter(Context context, ArrayList<Category> categories)
     {
         this.context = context;
         this.categories = categories;
+        this.listner = listner;
     }
     public static class CategoryViewHolder extends RecyclerView.ViewHolder
     {
@@ -41,15 +49,13 @@ public class CategoryAdvanceAdapter extends  RecyclerView.Adapter<CategoryAdvanc
              txtimage = (ImageView) itemView.findViewById(R.id.txtimage);
              btndelete = (Button) itemView.findViewById(R.id.btndelete);
              btnedit = (Button) itemView.findViewById(R.id.btnedit);
-
-
         }
     }
 
     @NonNull
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.single_quote, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.single_category, parent, false);
         return new CategoryViewHolder(view);
     }
 
