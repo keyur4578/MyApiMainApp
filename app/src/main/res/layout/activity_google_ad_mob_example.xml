@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.GoogleAdMobExample">
+
+<!--    <com.google.android.gms.ads.AdView-->
+<!--        android:id="@+id/adViewTop"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        ads:adSize="BANNER"-->
+<!--        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"-->
+<!--        android:layout_alignParentTop="true"/>-->
+
+    <Button
+        android:id="@+id/btnInterstitial"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/adViewTop"
+        android:layout_height="wrap_content"
+        android:text="Show Interstitial Ad" />
+
+    <Button
+        android:id="@+id/btnRewarded"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Rewarded Ad"
+        android:layout_below="@id/btnInterstitial"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/txtCoins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coins: 0"
+        android:textSize="18sp"
+        android:layout_below="@id/btnRewarded"
+        android:layout_marginTop="16dp"/>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

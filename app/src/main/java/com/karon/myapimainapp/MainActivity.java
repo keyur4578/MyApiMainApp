@@ -19,6 +19,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.karon.myapimainapp.views.AdvanceLoginActivity;
+import com.karon.myapimainapp.views.GoogleAdMobExample;
 import com.karon.myapimainapp.views.MyProfileActivity;
 import com.karon.myapimainapp.views.QuoteActivity;
 import com.karon.myapimainapp.views.RegisterActivity;
@@ -111,6 +112,10 @@ public class MainActivity extends AppCompatActivity {
             }
             if (item.getItemId() == R.id.nav_myprofile) {
                 Intent intent = new Intent(MainActivity.this, MyProfileActivity.class);
+                startActivity(intent);
+            }
+            if (item.getItemId() == R.id.nav_ads) {
+                Intent intent = new Intent(MainActivity.this, GoogleAdMobExample.class);
                 startActivity(intent);
             }
             drawerLayout.closeDrawer(GravityCompat.START);

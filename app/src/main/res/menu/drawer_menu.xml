@@ -30,4 +30,7 @@
     <item android:id="@+id/nav_myprofile"
         android:title="My Profile"
         android:icon="@drawable/ic_menu"/>
+    <item android:id="@+id/nav_ads"
+        android:title="Ads"
+        android:icon="@drawable/ic_menu"/>
    </menu>
