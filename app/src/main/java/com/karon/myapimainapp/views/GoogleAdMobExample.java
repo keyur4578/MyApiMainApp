@@ -34,10 +34,10 @@ public class GoogleAdMobExample extends AppCompatActivity {
             return insets;
         });
         MobileAds.initialize(this, initializationStatus -> {});
-        RequestConfiguration configuration = new RequestConfiguration.Builder()
-                .setTestDeviceIds(Arrays.asList("33C2D7C7F3A3B515667EE733C97C6AE3"))
-                .build();
-        MobileAds.setRequestConfiguration(configuration);
+//        RequestConfiguration configuration = new RequestConfiguration.Builder()
+//                .setTestDeviceIds(Arrays.asList("33C2D7C7F3A3B515667EE733C97C6AE3"))
+//                .build();
+//        MobileAds.setRequestConfiguration(configuration);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView = findViewById(R.id.adView);
        // adViewTop = findViewById(R.id.adViewTop);
