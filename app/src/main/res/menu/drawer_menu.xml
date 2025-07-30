@@ -33,4 +33,10 @@
     <item android:id="@+id/nav_ads"
         android:title="Ads"
         android:icon="@drawable/ic_menu"/>
+    <item android:id="@+id/nav_google"
+        android:title="Google Map"
+        android:icon="@drawable/ic_menu"/>
+    <item android:id="@+id/nav_payment"
+        android:title="Online Payment"
+        android:icon="@drawable/ic_menu"/>
    </menu>
