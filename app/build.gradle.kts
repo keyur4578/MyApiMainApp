@@ -48,4 +48,5 @@ dependencies {
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
     implementation("com.google.android.gms:play-services-ads:22.6.0")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.razorpay:checkout:1.6.33")
 }
